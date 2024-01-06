@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+{% load socialaccount %}
 
 
 <div class="row">
@@ -27,21 +28,33 @@
         <div class="text-center mt-4 mb-4">
             <p>Already registered? <a class="text-dark" href="{% url 'login' %}"><b>Login</b></a></p>
             <p>or login with:</p>
-            <button type="button" class="btn btn-dark btn-floating mx-1">
+            <form class="d-inline" action="{% provider_login_url 'facebook' %}" method="post">
+                {% csrf_token %}
+            <button type="submit" class="btn btn-dark btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>
             </button>
+            </form>
 
-            <button type="button" class="btn btn-dark btn-floating mx-1">
+            <form class="d-inline" action="{% provider_login_url 'Google' %}" method="post">
+                {% csrf_token %}
+            <button type="submit" class="btn btn-dark btn-floating mx-1">
             <i class="fab fa-google"></i>
             </button>
+            </form>
 
+            <form class="d-inline" action="{% provider_login_url 'twitter' %}" method="post">
+                {% csrf_token %}
             <button type="button" class="btn btn-dark btn-floating mx-1">
             <i class="fab fa-twitter"></i>
             </button>
+            </form>
 
-            <button type="button" class="btn btn-dark btn-floating mx-1">
+            <form class="d-inline" action="{% provider_login_url 'github' %}" method="post">
+                {% csrf_token %}
+            <button type="submit" class="btn btn-dark btn-floating mx-1">
             <i class="fab fa-github"></i>
             </button>
+            </form>
         </div>
     </div>
     <div class="col-4"></div>

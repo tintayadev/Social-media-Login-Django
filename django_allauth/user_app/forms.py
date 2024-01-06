@@ -1,5 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
+from django.contrib.auth.forms import (
+    UserCreationForm,
+    AuthenticationForm,
+    UsernameField,
+)
 from django.contrib.auth.models import User
 from django.utils.translation import gettext, gettext_lazy as _
 
@@ -10,7 +14,8 @@ class SignUpForm(UserCreationForm):
         label="Password", widget=forms.PasswordInput(attrs={"class": "form-control"})
     )
     password2 = forms.CharField(
-        label="Confirm password", widget=forms.PasswordInput(attrs={"class": "form-control"})
+        label="Confirm Password (again)",
+        widget=forms.PasswordInput(attrs={"class": "form-control"}),
     )
 
     class Meta:
@@ -27,6 +32,7 @@ class SignUpForm(UserCreationForm):
             "last_name": forms.TextInput(attrs={"class": "form-control"}),
             "email": forms.EmailInput(attrs={"class": "form-control"}),
         }
+
 
 # Default authentication form
 class LoginForm(AuthenticationForm):
